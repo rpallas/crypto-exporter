@@ -1,0 +1,16 @@
+global:
+  scrape_interval:     30s # By default, scrape targets every 15 seconds.
+  evaluation_interval: 30s # By default, scrape targets every 15 seconds.
+  # scrape_timeout is set to the global default (10s).
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+
+# Load and evaluate rules in this file every 'evaluation_interval' seconds.
+rule_files:
+  - /etc/prometheus/rules/*.rules
+
+# A scrape configurations
+scrape_configs:
+  - job_name: 'crypto'
+    static_configs:
+      - targets: ['crypto-exporter:3000']
