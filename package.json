@@ -1,0 +1,38 @@
+{
+  "name": "crypto-exporter",
+  "version": "1.0.0",
+  "description": "A Prometheus exporter for metrics on cryptocurrencies\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/rpallas/crypto-exporter.git"
+  },
+  "keywords": [
+    "cryptocurrency",
+    "crypto",
+    "prometheus",
+    "exporter",
+    "metrics",
+    "ethereum",
+    "ethplorer",
+    "coinmarketcap",
+    "etherscan"
+  ],
+  "author": "rpallas@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rpallas/crypto-exporter/issues"
+  },
+  "homepage": "https://github.com/rpallas/crypto-exporter#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "got": "^8.0.3",
+    "prom-client": "^10.2.2"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0"
+  }
+}
