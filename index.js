@@ -1,10 +1,13 @@
 const server = require('express')();
 const { register, collectDefaultMetrics } = require('prom-client');
 
+const collectors = require('./collectors');
+
 server.get('/metrics', (req, res) => {
-  // Collect metrics here
-  res.set('Content-Type', register.contentType);
-  res.end(register.metrics());
+  Promise.all(collectors.map(collector => collector.collect)).then(() => {
+    res.set('Content-Type', register.contentType);
+    res.end(register.metrics());
+  }).catch(console.log);
 });
 
 collectDefaultMetrics();
