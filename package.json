@@ -4,7 +4,8 @@
   "description": "A Prometheus exporter for metrics on cryptocurrencies\"",
   "main": "index.js",
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "start": "node ."
   },
   "repository": {
     "type": "git",
