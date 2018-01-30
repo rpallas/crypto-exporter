@@ -13,7 +13,7 @@ const txnTotalGauge = gauge('txn_total', 'Total number of transactons for accoun
 const tokenBalanceGauge = gauge('token_balance_usd', 'Overall token balance for account');
 const tokenGauges = {};
 
-async function aquire() {
+async function scrape() {
   const address = process.env.CRYPTO_EXPORTER_ADDRESS || '';
   const requestOptions = {
     json: true,
@@ -55,7 +55,7 @@ function arrange(response) {
 }
 
 function collect() {
-  return aquire().then((response) => arrange(response));
+  return scrape().then((response) => arrange(response));
 }
 
 module.exports = { collect };
