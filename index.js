@@ -4,7 +4,7 @@ const { register, collectDefaultMetrics } = require('prom-client');
 const collectors = require('./collectors');
 
 server.get('/metrics', (req, res) => {
-  Promise.all(collectors.map(collector => collector.collect)).then(() => {
+  Promise.all(collectors.map(collector => collector.collect())).then(() => {
     res.set('Content-Type', register.contentType);
     res.end(register.metrics());
   }).catch(console.log);
