@@ -10,6 +10,7 @@ const ethBalanceGauge = gauge('eth_balance', 'Total balance of either in account
 const ethTotalInGauge = gauge('eth_totalIn', 'Total either transferred into account');
 const ethTotalOutGauge = gauge('eth_totalOut', 'Total either transferred out of account');
 const txnTotalGauge = gauge('txn_total', 'Total number of transactons for account');
+const tokenHolderCountGauge = gauge('token_balance', 'Balance of specific token for account', ['address', 'symbol']);
 const tokenBalanceGauge = gauge('token_balance', 'Balance of specific token for account', ['address', 'symbol']);
 const tokenBalanceUSDGauge = gauge('token_balance_usd', 'Balance of specific token for account in USD', ['address', 'symbol']);
 const tokenBalanceTotalGauge = gauge('token_balance_total_usd', 'Overall token balance for account in USD');
@@ -42,6 +43,7 @@ function arrange(response) {
     overallTokenBalanceUSD += tokenBalanceUSD;
     tokenBalanceGauge.set({ address: address, symbol: symbol }, Number(token.balance) / Number(`1e${token.tokenInfo.decimals}`));
     tokenBalanceUSDGauge.set({ address: address, symbol: symbol }, Number(tokenBalanceUSD));
+    tokenHolderCountGauge.set({ address: address, symbol: symbol }, Number(token.tokenInfo.holdersCount));
   });
   tokenBalanceTotalGauge.set({ address: address }, overallTokenBalanceUSD);
 
