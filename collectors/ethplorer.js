@@ -10,8 +10,9 @@ const ethBalanceGauge = gauge('eth_balance', 'Total balance of either in account
 const ethTotalInGauge = gauge('eth_totalIn', 'Total either transferred into account');
 const ethTotalOutGauge = gauge('eth_totalOut', 'Total either transferred out of account');
 const txnTotalGauge = gauge('txn_total', 'Total number of transactons for account');
-const tokenBalanceGauge = gauge('token_balance_usd', 'Overall token balance for account');
-const tokenGauges = {};
+const tokenBalanceGauge = gauge('token_balance', 'Balance of specific token for account', ['address', 'symbol']);
+const tokenBalanceUSDGauge = gauge('token_balance_usd', 'Balance of specific token for account in USD', ['address', 'symbol']);
+const tokenBalanceTotalGauge = gauge('token_balance_total_usd', 'Overall token balance for account in USD');
 
 async function scrape() {
   const address = process.env.CRYPTO_EXPORTER_ADDRESS || '';
@@ -39,15 +40,8 @@ function arrange(response) {
     const symbol = token.tokenInfo.symbol;
     const tokenBalanceUSD = token.tokenInfo.price ? (Number(token.balance) * token.tokenInfo.price.rate) / Number(`1e${token.tokenInfo.decimals}`) : 0;
     overallTokenBalanceUSD += tokenBalanceUSD;
-    const tokenBalanceName = `token_${symbol}_balance`;
-    if (!tokenGauges[tokenBalanceName]) {
-      tokenGauges[tokenBalanceName] = gauge(tokenBalanceName, `Balance of ${symbol} for account`, ['address', 'symbol']);
-    }
-    tokenGauges[tokenBalanceName].set({ address: address, symbol: symbol }, Number(token.balance) / Number(`1e${token.tokenInfo.decimals}`));
-    if (!tokenGauges[`${tokenBalanceName}_usd`]) {
-      tokenGauges[`${tokenBalanceName}_usd`] = gauge(`${tokenBalanceName}_usd`, `Balance of ${symbol} in USD for account`, ['address', 'symbol']);
-    }
-    tokenGauges[`${tokenBalanceName}_usd`].set({ address: address, symbol: symbol }, tokenBalanceUSD);
+    tokenBalanceGauge.set({ address: address, symbol: symbol }, Number(token.balance) / Number(`1e${token.tokenInfo.decimals}`));
+    tokenBalanceUSDGauge.set({ address: address, symbol: symbol }, Number(tokenBalanceUSD));
   });
   tokenBalanceGauge.set({ address: address }, overallTokenBalanceUSD);
 
