@@ -43,7 +43,7 @@ function arrange(response) {
     tokenBalanceGauge.set({ address: address, symbol: symbol }, Number(token.balance) / Number(`1e${token.tokenInfo.decimals}`));
     tokenBalanceUSDGauge.set({ address: address, symbol: symbol }, Number(tokenBalanceUSD));
   });
-  tokenBalanceGauge.set({ address: address }, overallTokenBalanceUSD);
+  tokenBalanceTotalGauge.set({ address: address }, overallTokenBalanceUSD);
 
   console.log(`${new Date().toISOString()} - ethplorer metrics collected`);
 }
