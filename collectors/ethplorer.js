@@ -7,14 +7,14 @@ function gauge(name, help, labels=['address']) {
 }
 
 const metrics = {
-  ethBalance: gauge('eth_balance', 'Total balance of either in account');
-  ethTotalIn: gauge('eth_totalIn', 'Total either transferred into account');
-  ethTotalOut: gauge('eth_totalOut', 'Total either transferred out of account');
-  txnTotal: gauge('txn_total', 'Total number of transactons for account');
-  tokenHolderCount: gauge('token_balance', 'Balance of specific token for account', ['address', 'symbol']);
-  tokenBalance: gauge('token_balance', 'Balance of specific token for account', ['address', 'symbol']);
-  tokenBalanceUSD: gauge('token_balance_usd', 'Balance of specific token for account in USD', ['address', 'symbol']);
-  tokenBalanceTotal: gauge('token_balance_total_usd', 'Overall token balance for account in USD');
+  ethBalance: gauge('eth_balance', 'Total balance of either in account'),
+  ethTotalIn: gauge('eth_totalIn', 'Total either transferred into account'),
+  ethTotalOut: gauge('eth_totalOut', 'Total either transferred out of account'),
+  txnTotal: gauge('txn_total', 'Total number of transactons for account'),
+  tokenHolderCount: gauge('token_balance', 'Balance of specific token for account', ['address', 'symbol']),
+  tokenBalance: gauge('token_balance', 'Balance of specific token for account', ['address', 'symbol']),
+  tokenBalanceUSD: gauge('token_balance_usd', 'Balance of specific token for account in USD', ['address', 'symbol']),
+  tokenBalanceTotal: gauge('token_balance_total_usd', 'Overall token balance for account in USD')
 };
 
 async function scrape() {
