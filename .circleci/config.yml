@@ -28,6 +28,11 @@ jobs:
 
       - run: npm install
 
+      - run:
+          command: |
+            echo Running test
+            npm test -- -v
+
       - save_cache:
           paths:
             - node_modules

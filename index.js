@@ -1,3 +1,8 @@
-const collectors = require('./lib/collectors');
+const CryptoExporter = require('./lib');
 
-require('./lib').start(collectors);
+const services = {
+  collectors: require('./lib/collectors'),
+  http: require('./lib/util/http')
+};
+
+CryptoExporter.start(services);

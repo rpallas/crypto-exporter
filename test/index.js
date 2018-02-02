@@ -5,21 +5,23 @@ const Sinon = require('sinon');
 const CryptoExporter = require('./../lib');
 
 let server;
-const fakeCollectors = [
-  { collect: Sinon.spy() },
-  { collect: Sinon.spy() }
-];
+const fakes = {
+  collectors: [
+    { collect: Sinon.spy() },
+    { collect: Sinon.spy() }
+  ]
+};
 
 Test.before('server', t => {
-  server = CryptoExporter.start(fakeCollectors);
+  server = CryptoExporter.start(fakes);
 });
 
-Test.cb('/metrics collects the data', t => {
+Test.cb('GET /metrics - collects the data', t => {
   SuperTest(server)
     .get('/metrics')
     .expect(200)
-    .then(res => {
-      t.true(fakeCollectors.every(c => c.collect.called));
-      cb.end();
+    .end((err, res) => {
+      t.true(fakes.collectors.every(c => c.collect.called));
+      t.end();
     })
 });
