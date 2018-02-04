@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/rpallas/crypto-exporter#readme",
   "dependencies": {
+    "ccxt": "^1.10.981",
     "express": "^4.16.2",
     "got": "^8.0.3",
     "prom-client": "^10.2.2"
