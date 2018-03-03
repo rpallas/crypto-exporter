@@ -4,7 +4,7 @@ volumes:
     grafana_data: {}
 services:
   prometheus:
-    image: prom/prometheus:latest
+    image: rpallas/prometheus:latest
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
