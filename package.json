@@ -35,8 +35,8 @@
     "prom-client": "^10.2.2"
   },
   "devDependencies": {
-    "ava": "^0.25.0",
-    "sinon": "^4.2.2",
-    "supertest": "^3.0.0"
+    "ava": "0.25.0",
+    "sinon": "4.5.0",
+    "supertest": "3.0.0"
   }
 }
