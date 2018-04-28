@@ -4,7 +4,7 @@ volumes:
     grafana_data: {}
 services:
   prometheus:
-    image: rpallas/prometheus:latest
+    image: rpallas/prometheus:latest@sha256:771e0aad94372291e959b1ef4e6ea5434f5155e287cd56d5bc83ccbeea9e5e4e
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
@@ -13,7 +13,7 @@ services:
   grafana:
     depends_on:
       - prometheus
-    image: grafana/grafana:latest
+    image: grafana/grafana:latest@sha256:a6b37f9afdd9782f1e6264acaf3b09519aad454f34ca6b0e863dd9873e11fa67
     ports:
       - 3000:3000
     volumes:
@@ -22,12 +22,12 @@ services:
     entrypoint: "/opt/init.sh"
     depends_on:
       - grafana
-    image: grafana/grafana:latest
+    image: grafana/grafana:latest@sha256:a6b37f9afdd9782f1e6264acaf3b09519aad454f34ca6b0e863dd9873e11fa67
     volumes:
       - ./init.sh:/opt/init.sh
   crypto-exporter:
     environment:
       - CRYPTO_EXPORTER_ADDRESS=${CRYPTO_EXPORTER_ADDRESS}
-    image: rpallas/crypto-exporter:latest
+    image: rpallas/crypto-exporter:latest@sha256:a758e96d6b9906bd94de51658f65845d33852e6a42d0731c4fbfc4a96ee0f241
     # build: ../
 
