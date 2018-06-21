@@ -16,6 +16,7 @@ services:
     image: grafana/grafana:latest@sha256:a6b37f9afdd9782f1e6264acaf3b09519aad454f34ca6b0e863dd9873e11fa67
     ports:
       - 3000:3000
+    user: "472"
     volumes:
       - grafana_data:/var/lib/grafana
   grafana_init:
@@ -23,6 +24,7 @@ services:
     depends_on:
       - grafana
     image: grafana/grafana:latest@sha256:a6b37f9afdd9782f1e6264acaf3b09519aad454f34ca6b0e863dd9873e11fa67
+    user: "472"
     volumes:
       - ./init.sh:/opt/init.sh
   crypto-exporter:
