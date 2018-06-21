@@ -28,6 +28,6 @@ services:
   crypto-exporter:
     environment:
       - CRYPTO_EXPORTER_ADDRESS=${CRYPTO_EXPORTER_ADDRESS}
-    image: rpallas/crypto-exporter:latest@sha256:a758e96d6b9906bd94de51658f65845d33852e6a42d0731c4fbfc4a96ee0f241
+    image: rpallas/crypto-exporter:latest@sha256:602cac8d0141efe5e603e77c7e7df5da33b6c61116689e0455c76f3a10295d35
     # build: ../
 
