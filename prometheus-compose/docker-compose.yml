@@ -13,7 +13,7 @@ services:
   grafana:
     depends_on:
       - prometheus
-    image: grafana/grafana:latest@sha256:a6b37f9afdd9782f1e6264acaf3b09519aad454f34ca6b0e863dd9873e11fa67
+    image: grafana/grafana:latest@sha256:d134958cb61e30b1bc155b7978ec022f7701a80bdae83ab0b6c45ea7258f76a5
     ports:
       - 3000:3000
     volumes:
@@ -22,7 +22,7 @@ services:
     entrypoint: "/opt/init.sh"
     depends_on:
       - grafana
-    image: grafana/grafana:latest@sha256:a6b37f9afdd9782f1e6264acaf3b09519aad454f34ca6b0e863dd9873e11fa67
+    image: grafana/grafana:latest@sha256:d134958cb61e30b1bc155b7978ec022f7701a80bdae83ab0b6c45ea7258f76a5
     volumes:
       - ./init.sh:/opt/init.sh
   crypto-exporter:
