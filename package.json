@@ -32,7 +32,7 @@
     "ccxt": "^1.10.981",
     "express": "^4.16.2",
     "got": "^8.0.3",
-    "prom-client": "^10.2.2"
+    "prom-client": "^11.0.0"
   },
   "devDependencies": {
     "ava": "0.25.0",
